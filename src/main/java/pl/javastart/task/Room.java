@@ -7,29 +7,24 @@ public class Room {
     private boolean isAirConditioned;
     private double minTemperature;
 
-    public Room(int area, double currentTemperature, boolean isAirConditioned) {
+    public Room(int area, double currentTemperature, boolean isAirConditioned, double minTemperature) {
         this.area = area;
         this.currentTemperature = currentTemperature;
         this.isAirConditioned = isAirConditioned;
+        this.minTemperature = minTemperature;
     }
 
     public boolean toLowerTemperature() {
-        if (isAirConditioned && currentTemperature > minTemperature && currentTemperature - minTemperature >= 1) {
-            currentTemperature -= 1;
+
+        if (isAirConditioned && currentTemperature > minTemperature) {
+            if (currentTemperature - minTemperature >= 1) {
+                currentTemperature -= 1;
+            } else if (currentTemperature - minTemperature < 1  && currentTemperature - minTemperature > 0) {
+                currentTemperature = minTemperature;
+            }
             return true;
-        } else if (isAirConditioned && currentTemperature > minTemperature && currentTemperature - minTemperature < 1
-                && currentTemperature - minTemperature > 0) {
-            double difference = currentTemperature - minTemperature;
-            currentTemperature = currentTemperature - difference;
-            return true;
-        } else  {
-            return false;
         }
-    }
-
-    public double setMinTemp(double minTemp) {
-        return minTemperature = minTemp;
-
+        return false;
     }
 
     public double getCurrentTemperature() {
