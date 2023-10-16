@@ -19,7 +19,7 @@ public class Room {
         if (isAirConditioned && currentTemperature > minTemperature) {
             if (currentTemperature - minTemperature >= 1) {
                 currentTemperature -= 1;
-            } else if (currentTemperature - minTemperature < 1  && currentTemperature - minTemperature > 0) {
+            } else  {
                 currentTemperature = minTemperature;
             }
             return true;
